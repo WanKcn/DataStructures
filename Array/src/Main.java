@@ -1,23 +1,26 @@
 public class Main {
 
     public static void main(String[] args) {
-        // write your code here
-        int[] arr = new int[10];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = i;
+        Array arr = new Array(20);
+        // 往数字中添加10个元素先
+        for (int i = 0; i < 10; i++) {
+            arr.addLast(i);
         }
+        System.out.println(arr);
 
-        // 声明数组的时候具有初始值
-        int[] scores = new int[]{100, 99, 66};
-        for (int i = 0; i < scores.length; i++) {
-            System.out.println(scores[i]);
-        }
+        // 在索引1的位置插入元素23
+        arr.add(1, 23);
+        System.out.println(arr);
 
-        scores[0] = 102;  // 可以通过索引的方式修改数组
-        // foreach形式 在数组中把每一个数字都当作score打印出来
-        // 数组拥有可遍历可迭代的能力
-        for (int score : scores) {
-            System.out.println(score);
-        }
+        // 在整个数组的最前面添加一个元素-1
+        arr.addFirst(-1);
+        System.out.println(arr);
+
+        // 查询数组中的索引为3的元素
+        System.out.println(arr.getData(3));
+
+        // 将索引为2的元素替换为55
+        arr.setData(2, 55);
+        System.out.println(arr);
     }
 }
