@@ -1,6 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
+        // Array arr = new Array(20);
         Genericity<Integer> arr = new Genericity<>(20);
         // 往数字中添加10个元素先
         for (int i = 0; i < 10; i++) {

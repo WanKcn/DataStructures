@@ -140,8 +140,8 @@ public class Array {
         // 用ret接收要删除的元素备用
         int ret = data[index];
         // 备用后在进行删除的逻辑
-        for (int i = index; i <= size; i++)
-            data[i] = data[i + 1];
+        for (int i = index + 1; i < size; i++)
+            data[i - 1] = data[i];
         // 维护size
         size--;
         return ret;
