@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Array arr = new Array(20);
+        Genericity<Integer> arr = new Genericity<>(20);
         // 往数字中添加10个元素先
         for (int i = 0; i < 10; i++) {
             arr.addLast(i);
@@ -22,5 +22,23 @@ public class Main {
         // 将索引为2的元素替换为55
         arr.setData(2, 55);
         System.out.println(arr);
+
+        // 执行到此处时，输出的结果为  [-1, 0, 55, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        // 尝试将索引为3的元素删除即删除了1
+        arr.remove(3);
+        System.out.println(arr);
+
+        // 删除元素4
+        arr.removeElement(4);
+        System.out.println(arr);
+
+        // 删除第一个元素
+        arr.removeFirst();
+        System.out.println(arr);
+
+        // 删除最后一个元素
+        arr.removeLast();
+        System.out.println(arr);
+
     }
 }
