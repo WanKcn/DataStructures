@@ -1,6 +1,9 @@
+/**
+ * 创建一个简单的数组，实现增删改查
+ */
 public class Array {
     private int[] data;  //只能承载int型数据
-    private int size;   //data[]中有多少个有效元素
+    private int size;   //data[]中有多少个有效元素 指向数组中有多少个元素同时也代表数组中第一个没有元素的位置
 
     // 构造函数，传入数组的容量capacity构造Array
     public Array(int capacity) {
@@ -95,6 +98,75 @@ public class Array {
         data[index] = e;
     }
 
+    // 查找数组中是否包含某个元素e
+    public boolean contains(int e) {
+        // 只需要遍历从0-size的元素,即当前数组中的所有元素
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return true;
+            }
+        }
+        // 循环结束之后还没找到元素e的话,返回false
+        return false;
+    }
+
+    /**
+     * 找到这个元素返回索引值，找不到的时候返回一个特殊的索引，-1
+     *
+     * @param e 要查找的元素e
+     * @return 元素索引
+     */
+    public int find(int e) {
+        // 逻辑与查找元素完全一样，只不过在找到的时候返回索引值
+        for (int i = 0; i < size; i++) {
+            if (data[i] == e) {
+                return i;
+            }
+        }
+        // 循环结束之后还没找到元素e的话,返回非法索引-1
+        return -1;
+    }
+
+    /**
+     * 删除元素，设置为int，删除元素后，把删除的元素返回留给用户备用
+     *
+     * @param index 需要删除元素的索引
+     * @return 将删除的元素返回给用户
+     */
+    public int remove(int index) {
+        // 首先要判断index的合法性
+        if (index < 0 || index >= size)
+            throw new IllegalArgumentException("Remove failed. Index is illegal.");
+        // 用ret接收要删除的元素备用
+        int ret = data[index];
+        // 备用后在进行删除的逻辑
+        for (int i = index; i <= size; i++)
+            data[i] = data[i + 1];
+        // 维护size
+        size--;
+        return ret;
+    }
+
+    // 从数组中删除掉第一个元素，返回删除的元素
+    public int removeFirst() {
+        return remove(0);
+    }
+
+    // 从数组中删除掉最后一个元素，返回删除的元素
+    public int removeLast() {
+        // size-1是最后一个元素的位置
+        return remove(size - 1);
+    }
+
+    // 删除数组中的指定元素，只删除一个，因为在删除钱就已经知道需要删除的元素，不需要返回值
+    public void removeElement(int e) {
+        // 首先调用find返回索引看一下元素是否存在，存在则删除
+        // 存在的时候index不等于-1
+        int index = find(e);
+        if (index != -1) {
+            remove(index);
+        }
+    }
 
     /**
      * 覆盖父类，打印数组信息
