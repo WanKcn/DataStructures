@@ -51,9 +51,10 @@ public class ArrayQueue<E> implements Queue<E> {
     @Override
     public String toString() {
         StringBuilder res = new StringBuilder();
-        res.append("Queue:");
+        res.append(String.format("Queue: size = %d,capacity = %d\n", array.getSize(), getCapacity()));
+        res.append("Queue: ");
         // 在打印输出的时候显示告诉用户队首的位置
-        res.append("front[");
+        res.append("front [");
         for (int i = 0; i < array.getSize(); i++) {
             // 将array的每一个元素都添加到res中
             res.append(array.get(i));
@@ -63,7 +64,7 @@ public class ArrayQueue<E> implements Queue<E> {
             }
         }
         // 循环结束加上"]" 标注一个tail表示队列的末尾
-        res.append("]tail");
+        res.append("] tail");
         return res.toString();
     }
 }
